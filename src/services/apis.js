@@ -13,15 +13,25 @@ export const getPosts = async () => {
 };
 
 export const likePost = async (postId, userId) => {
-    try {
-        const response = await axios.post(`${API_URL}/${postId}/like`, { userId });
-        return response.data;
-    } catch (error) {
-        console.error("Error liking post:", error);
-        return null;
-    }
+  try {
+    const response = await axios.post(`${API_URL}/${postId}/like`, { userId });
+    return response.data;
+  } catch (error) {
+    console.error("Error liking post:", error);
+    return null;
+  }
 };
 
+
+export const dislikePost = async (postId, userId) => {
+  try {
+    const response = await axios.post(`${API_URL}/${postId}/dislike`, { userId });
+    return response.data;
+  } catch (error) {
+    console.error("Error liking post:", error);
+    return null;
+  }
+};
 export const commentOnPost = async (postId, userId, text) => {
     try {
         const response = await axios.post(`${API_URL}/${postId}/comment`, { userId, text });
