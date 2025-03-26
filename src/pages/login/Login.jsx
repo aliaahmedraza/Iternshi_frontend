@@ -37,7 +37,7 @@ const Login = () => {
         if (currentTime > expiryTime) {
           setIsTokenExpired(true);
         } else {
-          navigate("/");
+          navigate("/home");
         }
         setIsTokenPresent(true);
       } catch (error) {
@@ -63,7 +63,7 @@ const Login = () => {
 
       alert("Login Successful");
       Cookies.set("token", response.data.token);
-      navigate("/");
+      navigate("/home");
       resetForm();
     } catch (error) {
       console.error("Login error:", error.response?.data || error.message);

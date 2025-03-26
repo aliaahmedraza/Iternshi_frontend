@@ -4,7 +4,6 @@ import * as Yup from "yup";
 import axios from "axios";
 import Cookies from "js-cookie";
 import {jwtDecode} from "jwt-decode"; 
-import Login from "../../pages/login/Login";
 
 const CreatePostSchema = Yup.object().shape({
   title: Yup.string().required("Title is required"),
@@ -48,7 +47,6 @@ const CreatePost = () => {
 
   const handleSubmit = async (values, { setSubmitting, resetForm }) => {
     try {
-      // Send title and content; include the token in the Authorization header.
       const response = await axios.post(
         "http://localhost:3004/api/posts/",
         values,
@@ -56,7 +54,8 @@ const CreatePost = () => {
           headers: { Authorization: `Bearer ${token}` },
         }
       );
-      alert("Post created successfully!");
+        alert("Post created successfully!");
+        console.log(response);
       resetForm();
     } catch (error) {
       if (error.response && error.response.data) {
@@ -141,3 +140,5 @@ const CreatePost = () => {
 };
 
 export default CreatePost;
+
+

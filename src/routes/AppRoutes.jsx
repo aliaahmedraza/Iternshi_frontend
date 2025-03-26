@@ -1,33 +1,45 @@
 import React from 'react'
 import { Route,Routes } from 'react-router-dom';
-// import Dashboard from '../pages/Dashboard/Dashboard';
+import Dashboard from '../pages/Dashboard/Dashboard';
 import ProtectedRoute from './ProtectedRoute';
 import SignUp from '../pages/signUp/SignUp';
 import Login from '../pages/login/Login.jsx';
 import PostDetails from '../pages/PostDetails/PostDetails.jsx';
 import CreatePost from '../components/posts/CreatePost.jsx';
-import PostsList from '../components/posts/GetPosts.jsx';
+import PageNotFound from '../components/PageNotFound.jsx';
+import Home from '../pages/Home/Home.jsx';
 const AppRoutes = () => {
   return (
     <div>
       <Routes>
-        {/* <Route path="/" element={<Dashboard />} /> */}
-
-        {/* <Route path="/" element={<ProtectedRoute><Dashboard /></ProtectedRoute>} /> */}
+        <Route path="/" element={<Dashboard />} />
         <Route
-          path="/c"
+          path="/createpost"
           element={
             <ProtectedRoute>
               <CreatePost />
             </ProtectedRoute>
           }
         />
-        {/* <Route path="/postdetails" element={<PostDetails />} /> */}
-        <Route path="/" element={<PostsList/>} />
-        <Route path="/posts/:id" element={<PostDetails />} />
+        <Route
+          path="/posts/:id"
+          element={
+            <ProtectedRoute>
+              <PostDetails />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/home"
+          element={
+            <ProtectedRoute>
+              <Home/>
+            </ProtectedRoute>
+          }
+        />
         <Route path="/login" element={<Login />} />
         <Route path="/signup" element={<SignUp />} />
-        {/* <Route path="*" element={<NotFound />} /> */}
+        <Route path="*" element={<PageNotFound />} />
       </Routes>
     </div>
   );

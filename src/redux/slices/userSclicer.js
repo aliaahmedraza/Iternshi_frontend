@@ -1,21 +1,24 @@
 import { createSlice } from "@reduxjs/toolkit";
+import Cookies from "js-cookie";
+
+const token = Cookies.get("token") || "";
 
 const initialState = {
-  user: {},
+  token,
 };
 
 const userSlice = createSlice({
   name: "user",
   initialState,
   reducers: {
-    setUserState: (state, action) => {
-      state.user = action.payload;
+    setUserToken: (state, action) => {
+      state.token = action.payload;
     },
-    clearUserState: (state) => {
-      state.user = {};
+    clearUserToken: (state) => {
+      state.token = "";
     },
   },
 });
 
-export const { setUserState, clearUserState } = userSlice.actions;
+export const { setUserToken, clearUserToken } = userSlice.actions;
 export default userSlice.reducer;
