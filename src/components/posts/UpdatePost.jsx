@@ -54,7 +54,7 @@ const UpdatePost = ({ postId, onCancel, onUpdate }) => {
     const fetchPostDetails = async () => {
       try {
         const response = await axios.get(
-          `http://localhost:3004/api/posts/${postId}`
+          `https://internship-task-blogapp-1.onrender.com/api/posts/${postId}`
         );
         setInitialValues({
           title: response.data.title,
@@ -73,7 +73,7 @@ const UpdatePost = ({ postId, onCancel, onUpdate }) => {
   const handleSubmit = async (values, { setSubmitting }) => {
     try {
       const response = await axios.put(
-        `http://localhost:3004/api/posts/${postId}`,
+        `https://internship-task-blogapp-1.onrender.com/api/posts/${postId}`,
         values,
         { headers: { Authorization: `Bearer ${user.token}` } }
       );

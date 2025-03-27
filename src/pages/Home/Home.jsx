@@ -4,7 +4,10 @@ import { useNavigate } from 'react-router-dom'
 import Cookies from 'js-cookie'
 
 const Home = () => {
-    const navigate = useNavigate();
+  const navigate = useNavigate();
+  // console.log("API URL:", import.meta.env.VITE_API_URL);
+
+  
   return (
     <div>
       <div className='flex justify-between'>

@@ -25,7 +25,7 @@ const PostDetails = () => {
 
   const fetchPostDetails = async () => {
     try {
-      const response = await axios.get(`http://localhost:3004/api/posts/${id}`);
+      const response = await axios.get(`https://internship-task-blogapp-1.onrender.com/api/posts/${id}`);
       setPost(response.data);
       console.log(response);
     } catch (err) {
@@ -66,7 +66,7 @@ const PostDetails = () => {
   const handleLike = async () => {
     try {
       const response = await axios.patch(
-        `http://localhost:3004/api/posts/${id}/like`,
+        `https://internship-task-blogapp-1.onrender.com/api/posts/${id}/like`,
         {},
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -84,7 +84,7 @@ const PostDetails = () => {
   const handleDislike = async () => {
     try {
       const response = await axios.patch(
-        `http://localhost:3004/api/posts/${id}/dislike`,
+        `https://internship-task-blogapp-1.onrender.com/api/posts/${id}/dislike`,
         {},
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -103,7 +103,7 @@ const PostDetails = () => {
     try {
       const payload = { comment: values.comment };
       const response = await axios.post(
-        `http://localhost:3004/api/posts/${id}/comments`,
+        `https://internship-task-blogapp-1.onrender.com/api/posts/${id}/comments`,
         payload,
         {
           headers: { Authorization: `Bearer ${token}` },
@@ -126,7 +126,7 @@ const PostDetails = () => {
   const handleDelete = async () => {
     try {
       const response = await axios.delete(
-        `http://localhost:3004/api/posts/${id}`,
+        `https://internship-task-blogapp-1.onrender.com/api/posts/${id}`,
         {
           headers: { Authorization: `Bearer ${token}` },
           withCredentials: true,

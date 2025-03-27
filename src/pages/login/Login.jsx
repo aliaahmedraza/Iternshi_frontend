@@ -53,7 +53,7 @@ const Login = () => {
   const handleSubmit = async (values, { setSubmitting, resetForm }) => {
     try {
       const response = await axios.post(
-        "http://localhost:3004/api/auth/login",
+        "https://internship-task-blogapp-1.onrender.com/api/auth/login",
         {
           email: values.email,
           password: values.password,

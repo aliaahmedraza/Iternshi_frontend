@@ -26,7 +26,7 @@ const SignUp = () => {
   ) => {
     try {
       const response = await axios.post(
-        "http://localhost:3004/api/users/",
+        "https://internship-task-blogapp-1.onrender.com/api/users/",
         {
           name: values.name,
           email: values.email,

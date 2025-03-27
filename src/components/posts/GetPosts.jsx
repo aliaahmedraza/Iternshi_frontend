@@ -11,7 +11,7 @@ const PostsList = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
-        const response = await axios.get("http://localhost:3004/api/posts/");
+        const response = await axios.get("https://internship-task-blogapp-1.onrender.com/api/posts/");
         setPosts(response.data);
       } catch (err) {
         setError(err.message || "Error fetching posts");

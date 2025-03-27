@@ -50,7 +50,7 @@ const CreatePost = () => {
   const handleSubmit = async (values, { setSubmitting, resetForm }) => {
     try {
       const response = await axios.post(
-        "http://localhost:3004/api/posts/",
+        "https://internship-task-blogapp-1.onrender.com/api/posts/",
         values,
         {
           headers: { Authorization: `Bearer ${token}` },
