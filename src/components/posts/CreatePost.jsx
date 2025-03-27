@@ -4,6 +4,7 @@ import * as Yup from "yup";
 import axios from "axios";
 import Cookies from "js-cookie";
 import {jwtDecode} from "jwt-decode"; 
+import { useNavigate } from "react-router-dom";
 
 const CreatePostSchema = Yup.object().shape({
   title: Yup.string().required("Title is required"),
@@ -11,6 +12,7 @@ const CreatePostSchema = Yup.object().shape({
 });
 
 const CreatePost = () => {
+  const navigate = useNavigate();
   const token = Cookies.get("token");
   if (!token) {
     return (
@@ -123,14 +125,22 @@ const CreatePost = () => {
                   </div>
                 )}
               </div>
-
+              <div className="flex justify-between">
+                <button
+                type="submit"
+                onClick={()=>navigate(-1)}
+                className="w-[30%] bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                Back
+              </button>
               <button
                 type="submit"
                 disabled={isSubmitting}
-                className="w-full bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="w-[30%] bg-blue-500 text-white py-2 rounded-md hover:bg-blue-600 transition duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {isSubmitting ? "Creating Post..." : "Create Post"}
-              </button>
+              </button></div>
+   
             </Form>
           )}
         </Formik>

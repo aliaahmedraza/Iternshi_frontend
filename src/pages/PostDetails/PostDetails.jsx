@@ -149,18 +149,24 @@ const PostDetails = () => {
 
   return (
     <div className="container mx-auto p-4">
-      {toggleMessage && (
+      <div className="border-2 p-6 flex justify-between mb-2">      {toggleMessage && (
         <div className="mb-4 p-2 bg-yellow-200 text-yellow-800 text-center rounded">
           {toggleMessage}
         </div>
       )}
-      <h1 className="text-3xl font-bold mb-4">{post.title}</h1>
-      <p className="mb-4">{post.content}</p>
+      <div className="">
+        <h1 className="text-3xl font-bold mb-4">Title:{post.title}</h1>
+      <p className="mb-4">Content: {post.content}</p>
       <div className="mb-4 text-sm text-gray-500">
         <strong>Author:</strong> {post.author?.name || "Unknown"}
       </div>
+      <h1 className="mb-4 text-lg font-semibold text-gray-800">
+  Created At: {post?.createdAt ? new Date(post.createdAt).toLocaleString() : 'Date not available'}
+          </h1>
+        </div>
 
-      {loggedInUserId && isPostAuthor() && (
+        <div className="flex items-end">
+               {loggedInUserId && isPostAuthor() && (
         <div className="mb-4">
           <button
             onClick={handleUpdate}
@@ -176,6 +182,9 @@ const PostDetails = () => {
           </button>
         </div>
       )}
+        </div>
+      </div>
+
 
       <div className="mb-4">
         <button
@@ -195,7 +204,7 @@ const PostDetails = () => {
         <h2 className="text-2xl font-bold mb-4">Comments</h2>
         {post.comments && post.comments.length > 0 ? (
           post.comments.map((comment) => (
-            <div key={comment._id} className="border-b py-2">
+            <div key={comment._id} className="border-1 py-2">
               <strong>{comment.user?.name || "Anonymous"}:</strong>{" "}
               {comment.comment}
             </div>
@@ -233,7 +242,7 @@ const PostDetails = () => {
           onClick={handleNavigation}
           className="bg-blue-500 text-white px-4 py-2 rounded"
         >
-          Home
+          Back
         </button>
       </div>
     </div>

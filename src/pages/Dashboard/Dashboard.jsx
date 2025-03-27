@@ -24,7 +24,7 @@ const Dashboard = () => {
           </button>
         </div>
       </div>
-      <div className="text-center p-6">
+      <div className="text-center p-6 mt-72">
         <h2 className="text-xl font-semibold mb-4">Welcome to the Blog App</h2>
         <p className="text-gray-700 mb-4">
           Please register or log in to create, like, and comment on posts.
