@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { useSelector, useDispatch } from "react-redux";
-import { setUserToken } from "../../redux/slices/userSclicer.js"; 
+import { useSelector } from "react-redux";
 import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
-import Cookies from "js-cookie";
 import { jwtDecode } from "jwt-decode";
+import Loader from "../Loader/Loader";
 
 const UpdatePostSchema = Yup.object().shape({
   title: Yup.string().required("Title is required"),
@@ -13,13 +12,10 @@ const UpdatePostSchema = Yup.object().shape({
 });
 
 const UpdatePost = ({ postId, onCancel, onUpdate }) => {
-  const dispatch = useDispatch();
 
-  // Retrieve the token from the Redux store
   const tokenFromStore = useSelector((state) => state.user.token);
   console.log("Token from store:", tokenFromStore);
 
-  // Decode the token to get user details
   let user = {};
   if (tokenFromStore) {
     try {
@@ -48,7 +44,6 @@ const UpdatePost = ({ postId, onCancel, onUpdate }) => {
     content: "",
   });
   const [loading, setLoading] = useState(true);
-  const [error, setError] = useState("");
 
   useEffect(() => {
     const fetchPostDetails = async () => {
@@ -61,7 +56,7 @@ const UpdatePost = ({ postId, onCancel, onUpdate }) => {
           content: response.data.content,
         });
       } catch (err) {
-        setError(err.message || "Error fetching post details");
+        console.log(err.message || "Error fetching post details");
       } finally {
         setLoading(false);
       }
@@ -94,8 +89,7 @@ const UpdatePost = ({ postId, onCancel, onUpdate }) => {
     }
   };
 
-  if (loading) return <div>Loading post details...</div>;
-  if (error) return <div>Error: {error}</div>;
+  if (loading) return <div className="flex justify-center items-center"><Loader/></div>;
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">

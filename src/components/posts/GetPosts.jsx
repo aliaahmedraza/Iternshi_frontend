@@ -1,20 +1,17 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
-import Cookies from "js-cookie";
-
+import Loader from "../Loader/Loader";
 const PostsList = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
-    const [error, setError] = useState(null);
-    const token = Cookies.get("token");
   useEffect(() => {
     const fetchPosts = async () => {
       try {
         const response = await axios.get("https://internship-task-blogapp-1.onrender.com/api/posts/");
         setPosts(response.data);
       } catch (err) {
-        setError(err.message || "Error fetching posts");
+       console.log ("Error fetcing Posts", err)
       } finally {
         setLoading(false);
       }
@@ -23,8 +20,7 @@ const PostsList = () => {
     fetchPosts();
   }, []);
 
-  if (loading) return <div>Loading posts...</div>;
-  if (error) return <div>Error: {error}</div>;
+  if (loading) return <div className="flex justify-center items-center"><Loader/></div>;
 
   return (
     <div className="container mx-auto p-4">

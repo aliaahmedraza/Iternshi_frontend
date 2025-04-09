@@ -6,7 +6,7 @@ import SignUp from '../pages/signUp/SignUp';
 import Login from '../pages/login/Login.jsx';
 import PostDetails from '../pages/PostDetails/PostDetails.jsx';
 import CreatePost from '../components/posts/CreatePost.jsx';
-import PageNotFound from '../components/PageNotFound.jsx';
+import PageNotFound from '../components/PageNotFound/PageNotFound.jsx';
 import Home from '../pages/Home/Home.jsx';
 const AppRoutes = () => {
   return (

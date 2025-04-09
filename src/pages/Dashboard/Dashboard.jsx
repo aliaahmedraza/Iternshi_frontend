@@ -5,6 +5,7 @@ const Dashboard = () => {
   const navigate = useNavigate();
   return (
     <div className="flex flex-col">
+     
       <div className="bg-cyan-700 h-28 flex justify-between items-center gap-2 p-5">
         <div>
           <h1 className="font-extrabold text-4xl">Blog App</h1>
