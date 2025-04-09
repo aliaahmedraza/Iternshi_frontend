@@ -4,7 +4,7 @@ import { Formik, Form, Field } from "formik";
 import * as Yup from "yup";
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
-import Loader from "../Loader/Loader";
+import Loader from "../Loader/Loader.jsx";
 
 const UpdatePostSchema = Yup.object().shape({
   title: Yup.string().required("Title is required"),
@@ -25,20 +25,6 @@ const UpdatePost = ({ postId, onCancel, onUpdate }) => {
       console.error("Error decoding token:", err);
     }
   }
-
-  if (!user || !user.id || !user.token) {
-    return (
-      <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
-        <div className="bg-white p-8 rounded-xl shadow-md w-full max-w-md text-center">
-          <h2 className="text-2xl font-bold mb-4">
-            You must be logged in to update a post.
-          </h2>
-          <p>Please log in first.</p>
-        </div>
-      </div>
-    );
-  }
-
   const [initialValues, setInitialValues] = useState({
     title: "",
     content: "",
@@ -64,6 +50,19 @@ const UpdatePost = ({ postId, onCancel, onUpdate }) => {
 
     fetchPostDetails();
   }, [postId]);
+
+  if (!user || !user.id || !user.token) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
+        <div className="bg-white p-8 rounded-xl shadow-md w-full max-w-md text-center">
+          <h2 className="text-2xl font-bold mb-4">
+            You must be logged in to update a post.
+          </h2>
+          <p>Please log in first.</p>
+        </div>
+      </div>
+    );
+  }
 
   const handleSubmit = async (values, { setSubmitting }) => {
     try {
