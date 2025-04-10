@@ -5,12 +5,12 @@ import { Formik, Form, Field } from "formik";
 import Cookies from "js-cookie";
 import { jwtDecode } from "jwt-decode";
 import UpdatePost from "../../components/posts/UpdatePost.jsx";
+import Loader from "../../components/Loader/Loader.jsx";
 
 const PostDetails = () => {
   const { id } = useParams();
   const navigate = useNavigate();
   const [post, setPost] = useState(null);
-  const [error, setError] = useState("");
   const [loading, setLoading] = useState(true);
   const [isUpdating, setIsUpdating] = useState(false);
   const [toggleMessage, setToggleMessage] = useState("");
@@ -29,7 +29,7 @@ const PostDetails = () => {
       setPost(response.data);
       console.log(response);
     } catch (err) {
-      setError(err.message || "Error fetching post");
+      console.log(err.message || "Error fetching post");
     } finally {
       setLoading(false);
     }
@@ -143,8 +143,7 @@ const PostDetails = () => {
     navigate(-1);
   };
 
-  if (loading) return <div>Loading post details...</div>;
-  if (error) return <div>Error: {error}</div>;
+  if (loading) return <div><Loader/></div>;
   if (!post) return <div>No post found.</div>;
 
   return (
