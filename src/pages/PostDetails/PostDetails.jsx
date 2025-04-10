@@ -143,7 +143,7 @@ const PostDetails = () => {
     navigate(-1);
   };
 
-  if (loading) return <div><Loader/></div>;
+  if (loading) return <div className="flex justify-center items-center"><Loader/></div>;
   if (!post) return <div>No post found.</div>;
 
   return (
