@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Loader from "../Loader/Loader";
+import UpdatePost from "./UpdatePost";
 const PostsList = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -42,6 +43,7 @@ const PostsList = () => {
   Created At: {post?.createdAt ? new Date(post.createdAt).toLocaleString() : 'Date not available'}
 </h1>
             </div>
+            <UpdatePost/>
           </Link>
         ))}
       </div>
