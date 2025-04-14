@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import Loader from "../Loader/Loader";
-import UpdatePost from "./UpdatePost";
 const PostsList = () => {
   const [posts, setPosts] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -47,7 +46,7 @@ const PostsList = () => {
           </Link>
           
         ))}
-          <UpdatePost/>
+
       </div>
     </div>
   );
