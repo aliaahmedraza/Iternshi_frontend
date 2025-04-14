@@ -43,9 +43,11 @@ const PostsList = () => {
   Created At: {post?.createdAt ? new Date(post.createdAt).toLocaleString() : 'Date not available'}
 </h1>
             </div>
-            <UpdatePost/>
+          
           </Link>
+          
         ))}
+          <UpdatePost/>
       </div>
     </div>
   );
