@@ -50,7 +50,7 @@ const UpdatePost = ({ postId, onCancel, onUpdate }) => {
 
     fetchPostDetails();
   }, [postId]);
-
+  
   if (!user || !user.id || !user.token) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-gray-100 p-4">
